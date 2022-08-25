@@ -8,3 +8,12 @@
 # 실행
 - pip install -r requirements.txt
 - python app/main.py
+
+# 참고
+- gitignore(./secrets.json)
+{
+    "MONGO_DB_NAME": "",
+    "MONGO_URL": "",
+    "NAVER_API_ID": "",
+    "NAVER_API_SECRET": ""
+}
