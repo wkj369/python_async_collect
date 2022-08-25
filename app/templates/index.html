@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <title>{{ title }}</title>
+    <link href="https://unpkg.com/mvp.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>{{ title }}</h1>
+        <center>
+            <!--http://127.0.0.1:8000/search?q=hello-->
+            <form id="search_form" , action="/search">
+                <input type="search" placeholder="keyword" id="search_input" name="q" />
+                <button type="submit">검색</button>
+            </form>
+        </center>
+    </header>
+    <main>
+        {% if books %}
+        <center>
+            <h3 style="color:gray">{{books|length}}개 데이터 수집..</h3>
+        </center>
+        <section>
+            <!--books 순회-->
+            {% for book in books %}
+            <div>
+                <img src="{{book.image}}" with="150px" height="200px" />
+                <p>
+                    <!--출판사,이름의 문자열 길이가 10을 초과하면 자름.-->
+                    {% if book.publisher|length > 10 %}
+                    {{book.publisher[:10]}}...
+                    {% else %}{{book.publisher}} {% endif %}
+                </p>
+                <p>{{book.price}}원</p>
+            </div>
+            {% endfor %}
+        </section>
+        <!--context에서 books 데이터를 받지 못한다면-->
+        {% else %}
+        <center>
+            <h3 style="color:gray">Please Input Keyword...</h3>
+        </center>
+        {% endif %}
+    </main>
+</body>
+
+</html>
